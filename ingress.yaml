@@ -14,7 +14,7 @@ spec:
             name: react-kong
             port:
               number: 3000
-        path: /react-kong/
+        path: /react-kong
         pathType: Prefix
 status:
   loadBalancer: {}
