@@ -8,10 +8,10 @@ metadata:
   namespace: kong
 spec:
   ports:
-  - name: 8080-3000
+  - name: 8080-3006
     port: 8080
     protocol: TCP
-    targetPort: 3000
+    targetPort: 3006
   selector:
     app: react-kong
   type: ClusterIP
