@@ -7,4 +7,4 @@ COPY ./ /usr/share/nginx/html/react-kong
 
 WORKDIR /usr/share/nginx/html/react-kong
 RUN yarn install 
-CMD yarn start
+CMD serve -s build -p 8000 
