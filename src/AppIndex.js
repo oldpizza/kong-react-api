@@ -16,13 +16,13 @@ export default function AppIndex() {
       <div> 
         <NavbarIndex />
         <Routes>
-          <Route path='/react-kong/login' element={<Login />} />
-          <Route path='/react-kong/register' element={<Register />} />
-          <Route path='/react-kong/users' element={<Users />} />
-          <Route path='/react-kong/' element={<Firstpage />} />
-          <Route path='/react-kong/create' element={<UserCreate />} />
-          <Route path='/react-kong/update/:id' element={<UserUpdate />} />
-          <Route path='/react-kong/Addpic' element={<Addpic />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/users' element={<Users />} />
+          <Route path='/' element={<Firstpage />} />
+          <Route path='/create' element={<UserCreate />} />
+          <Route path='/update/:id' element={<UserUpdate />} />
+          <Route path='/Addpic' element={<Addpic />} />
 
         </Routes>
       </div>
