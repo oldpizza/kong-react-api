@@ -12,7 +12,7 @@ export default function ButtonAppBar() {
         <Toolbar>
 
           <Typography  variant="h4" sx={{ flexGrow: 1 }}>
-           <Button href='/react-kong'  variant="h1" component="div" sx={{ flexGrow: 1 }}>KONGZA</Button> 
+           <Button href='/react-kong/'  variant="h1" component="div" sx={{ flexGrow: 1 }}>KONGZA</Button> 
           </Typography>
           <Button href='/react-kong/login' color="inherit">Login</Button>
         </Toolbar>
