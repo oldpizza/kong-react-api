@@ -1,14 +1,11 @@
-# Base image
-FROM nginx:latest
+FROM nginx:alpine
+RUN apk add bash ###Solution: Make use of apk add to install packages on Alpine.
+RUN apk update && apk upgrade --no-cache
+RUN apk add --update nodejs yarn
 
-# Set the working directory inside the container
-WORKDIR /usr/share/nginx/html
+COPY build/ /usr/share/nginx/html/react-kong
 
-# Copy the build output files to the container
-COPY build/ .
+WORKDIR /usr/share/nginx/html/react-kong
+RUN yarn install 
+CMD yarn global add serve ; serve -s build
 
-# Expose the container's port
-EXPOSE 80
-
-# Start NGINX when the container starts
-CMD ["nginx", "-g", "daemon off;"]
