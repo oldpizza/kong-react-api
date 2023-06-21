@@ -1,10 +1,23 @@
-FROM nginx:alpine
-RUN apk add bash ###Solution: Make use of apk add to install packages on Alpine.
-RUN apk update && apk upgrade --no-cache
-RUN apk add --update nodejs yarn nginx
+# Base image
+FROM node:latest as build
 
-COPY . /usr/share/nginx/html/react-kong
+# Set the working directory inside the container
+WORKDIR /app/react-kong
 
-WORKDIR /usr/share/nginx/html/react-kong
-RUN yarn install 
-CMD yarn global add serve ; serve -s build
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the source code to the container
+COPY . .
+
+# Build the React app
+RUN npm run build
+
+# Install serve globally
+RUN npm install -g serve
+
+# Use serve to serve the build
+CMD ["serve", "-s", "build", "-l", "3000"]
