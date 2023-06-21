@@ -47,7 +47,7 @@ export default function UserCreate() {
       .then(data => {
         console.log('success', data);
         alert("success")
-        window.location ='/users'
+        window.location ='/react-kong/users'
       })
       .catch((error) => {
         console.error('Error', error);
