@@ -19,7 +19,7 @@ export default function AppIndex() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/users' element={<Users />} />
-          <Route path='/' element={<Firstpage />} />
+          <Route path='/react-kong' element={<Firstpage />} />
           <Route path='/create' element={<UserCreate />} />
           <Route path='/update/:id' element={<UserUpdate />} />
           <Route path='/Addpic' element={<Addpic />} />
