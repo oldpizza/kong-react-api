@@ -20,7 +20,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy the build output from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html/react-kong
 
 # Copy the Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
