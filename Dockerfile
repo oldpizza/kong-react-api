@@ -21,12 +21,13 @@ FROM nginx:alpine
 
 # Copy the build output from the previous stage
 COPY --from=build /app/build /usr/share/nginx/html/react-kong
-
+COPY --from=build /app/build /etc/nginx/html/
 # Copy the Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose the container's port
 EXPOSE 80
+
 
 # Start Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]  
