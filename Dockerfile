@@ -16,20 +16,8 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Use a lightweight web server to serve the build
-FROM node:alpine
-
-# Install serve
+# Install serve globally
 RUN npm install -g serve
 
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy the build output from the previous stage
-COPY --from=build /app/build ./build
-
-# Expose the container's port
-EXPOSE 80
-
-# Start the server
-CMD ["serve", "-s", "build", "-l", "80"]
+# Use serve to serve the build
+CMD ["serve", "-s", "build", "-l", "3000"]
