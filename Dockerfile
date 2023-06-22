@@ -16,26 +16,6 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Base image for the Node.js API
-FROM node:latest as api
-
-# Set the working directory for the API
-WORKDIR /app/backend
-
-# Copy package.json and package-lock.json for the API
-COPY backend/package*.json ./
-
-# Install dependencies for the API
-RUN npm install
-
-# Copy the source code for the API
-COPY backend ./
-
-# Expose the API's port
-EXPOSE 3334
-
-# Start the Node.js API
-CMD ["node", "server.js"]
 # Use Nginx as the server
 FROM nginx:alpine
 
