@@ -6,7 +6,7 @@ metadata:
   namespace: kong
 spec:
   rules:
-  - host: kongza.saksiam.com
+  - host: ken-ubuntu.saksiam.corp
     http:
       paths:
       - backend:
