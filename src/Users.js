@@ -39,7 +39,7 @@ export default function UserList() {
 
         }else{
           alert("authen fail")
-          window.location ='/login'
+          window.location ='/react-kong/login'
         }
       })
       .catch((error) => {
@@ -62,7 +62,7 @@ export default function UserList() {
   }, [])
 
   const UpdateUser = id => {
-    window.location = '/update/'+id
+    window.location = '/react-kong/update/'+id
   }
   
   const popupimage = id => {

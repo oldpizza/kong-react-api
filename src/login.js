@@ -36,7 +36,7 @@ export default function SignInSide() {
       .then(data => {
         if(data.status == 'ok'){
           localStorage.setItem('token', data.token)
-          window.location ='/users'
+          window.location ='/react-kong/users'
           alert("login success")
         } else{
           alert("login fail")

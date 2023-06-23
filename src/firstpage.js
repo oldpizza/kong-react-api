@@ -1,8 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
 
-import NavbarIndex from './NavbarIndex'
-import Users from './Users'
 
 
 

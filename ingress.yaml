@@ -13,8 +13,8 @@ spec:
           service:
             name: react-kong
             port:
-              number: 3000
-        path: /react-kong
+              number: 8080
+        path: /react-kong/
         pathType: Prefix
 status:
   loadBalancer: {}
