@@ -5,10 +5,13 @@ FROM node:latest as build
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY . ./
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+
+# Copy the source code to the container
+COPY . .
 
 # Build the React app
 RUN npm run build
@@ -17,13 +20,17 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy the build output from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html/gitsaktechkong
+COPY --from=build /app/build /usr/share/nginx/html/react-kong
 
 # Copy the Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose the container's port
-EXPOSE 80
+# Install MariaDB client
+RUN apk add --no-cache mariadb-client
 
-# Start Nginx when the container starts
-CMD ["nginx", "-g", "daemon off;"]  
+# Expose the container's ports
+EXPOSE 80
+EXPOSE 3306
+
+# Start Nginx and connect to MariaDB when the container starts
+CMD ["sh", "-c", "nginx -g 'daemon off;' & mysql -h localhost -u root -p 123456 kongza"]
