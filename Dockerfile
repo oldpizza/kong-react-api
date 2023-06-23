@@ -4,11 +4,11 @@ FROM node:latest as build
 # Set the working directory inside the container
 WORKDIR /app
 
+# Copy package.json and package-lock.json
+COPY . ./
+
 # Install dependencies
 RUN npm install
-
-# Copy the source code to the container
-COPY . .
 
 # Build the React app
 RUN npm run build
