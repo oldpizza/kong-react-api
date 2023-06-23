@@ -2,7 +2,7 @@
 FROM node:latest as build
 
 # Set the working directory inside the container
-WORKDIR /
+WORKDIR /app
 
 # Install dependencies
 RUN npm install
