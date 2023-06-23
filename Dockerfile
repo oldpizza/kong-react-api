@@ -16,26 +16,6 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Base image for the Node.js API
-FROM node:latest as api
-
-# Set the working directory for the API
-WORKDIR /app/backend
-
-# Copy package.json and package-lock.json for the API
-COPY backend/package*.json ./
-
-# Install dependencies for the API
-RUN npm install
-
-# Copy the source code for the API
-COPY backend ./
-
-# Expose the API's port
-EXPOSE 3334
-
-# Start the Node.js API
-CMD ["node", "server.js"]
 # Use Nginx as the server
 FROM nginx:alpine
 
@@ -45,8 +25,12 @@ COPY --from=build /app/build /usr/share/nginx/html/react-kong
 # Copy the Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose the container's port
-EXPOSE 80
+# Install MariaDB client
+RUN apk add --no-cache mariadb-client
 
-# Start Nginx when the container starts
-CMD ["nginx", "-g", "daemon off;"]  
+# Expose the container's ports
+EXPOSE 80
+EXPOSE 3306
+
+# Start Nginx and connect to MariaDB when the container starts
+CMD ["sh", "-c", "nginx -g 'daemon off;' & mysql -h localhost -u root -p 123456 kongza"]
